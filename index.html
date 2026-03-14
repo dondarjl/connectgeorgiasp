@@ -91,7 +91,7 @@
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: url('https://images.unsplash.com/photo-1565017229231-97d248b695e2?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+            background: url('images/hero.jpg') center/cover no-repeat;
         }
 
         .hero-bg::after {
@@ -456,6 +456,160 @@
         }
 
         .gallery-cell:hover .gallery-cell-label { opacity: 1; }
+
+        /* ─── FOOD SECTION ──────────────────────────── */
+        .food-section {
+            background: var(--dark);
+            padding: 100px 0;
+        }
+
+        .food-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .food-image {
+            position: relative;
+            height: 500px;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .food-image::before {
+            content: '';
+            position: absolute;
+            inset: -12px -12px 12px 12px;
+            border: 1px solid rgba(212,184,150,0.2);
+            border-radius: 4px;
+            z-index: 0;
+        }
+
+        .food-text .section-title { color: var(--cream); }
+        .food-text .section-label { color: var(--light-warm); }
+
+        .food-items {
+            margin-top: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .food-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 18px 20px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .food-item:hover { background: rgba(255,255,255,0.07); }
+        .food-emoji { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+
+        .food-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--cream);
+            margin-bottom: 3px;
+        }
+
+        .food-item p {
+            font-size: 13px;
+            color: rgba(245,240,232,0.5);
+            line-height: 1.6;
+        }
+
+        /* ─── EXPANDED GALLERY ───────────────────────── */
+        .gallery2-section {
+            background: var(--cream);
+            padding: 100px 60px;
+        }
+
+        .gallery2-inner { max-width: 1200px; margin: 0 auto; }
+
+        .gallery2-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 320px 320px;
+            gap: 16px;
+            margin-top: 48px;
+        }
+
+        .gallery2-cell {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .gallery2-cell.tall { grid-row: span 2; }
+
+        .gallery2-cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery2-cell:hover img { transform: scale(1.06); }
+
+        .gallery2-label {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 28px 20px 16px;
+            background: linear-gradient(to top, rgba(26,22,18,0.8), transparent);
+            color: white;
+        }
+
+        .gallery2-label span {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 2px;
+        }
+
+        .gallery2-label small {
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        /* ─── ITINERARY DAY IMAGES ───────────────────── */
+        .day-image {
+            margin-top: 14px;
+            border-radius: 4px;
+            overflow: hidden;
+            height: 160px;
+        }
+
+        .day-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .day-item:hover .day-image img { transform: scale(1.04); }
 
         /* ─── ITINERARY ─────────────────────────────── */
         .itinerary-section { background: var(--cream); }
@@ -1043,6 +1197,13 @@
             .gallery-cell:first-child { grid-row: auto; grid-column: 1 / 3; height: 280px; }
             .gallery-cell { height: 200px; }
             .itinerary-image-panel { display: none; }
+            .food-grid { grid-template-columns: 1fr; gap: 40px; }
+            .food-image { height: 320px; }
+            .food-image::before { display: none; }
+            .gallery2-section { padding: 70px 24px; }
+            .gallery2-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+            .gallery2-cell.tall { grid-row: auto; grid-column: 1 / 3; height: 280px; }
+            .gallery2-cell { height: 220px; }
             footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
             .footer-links { flex-wrap: wrap; gap: 16px; }
         }
@@ -1107,7 +1268,7 @@
     <h2 class="section-title reveal">Viajes que <em>transforman,</em><br>no paquetes turísticos</h2>
     <div class="about-grid">
         <div class="about-image reveal">
-            <img src="https://images.unsplash.com/photo-1604537466573-5e94508fd243?auto=format&fit=crop&w=800&q=80" alt="Georgia">
+            <img src="images/about.jpg" alt="Georgia" alt="Georgia">
             <div class="about-image-badge">
                 <div class="badge-number">4.9</div>
                 <div class="badge-text">Valoración media</div>
@@ -1190,6 +1351,51 @@
     </div>
 </section>
 
+<!-- FOOD SECTION -->
+<section class="food-section">
+    <div class="food-inner">
+        <div class="food-grid">
+            <div class="food-image reveal">
+                <img src="images/comida.jpg" alt="Gastronomía georgiana">
+            </div>
+            <div class="food-text">
+                <p class="section-label reveal">La mesa georgiana</p>
+                <h2 class="section-title reveal">Comer en Georgia es<br><em>una experiencia en sí misma</em></h2>
+                <div class="food-items">
+                    <div class="food-item reveal">
+                        <span class="food-emoji">🥖</span>
+                        <div>
+                            <h4>Khachapuri</h4>
+                            <p>El pan relleno de queso fundido que encuentras en cada esquina. Cada región tiene su versión — el adjaruli en barquita con huevo es el más espectacular.</p>
+                        </div>
+                    </div>
+                    <div class="food-item reveal">
+                        <span class="food-emoji">🍖</span>
+                        <div>
+                            <h4>Mtsvadi & Khinkali</h4>
+                            <p>Brochetas de carne a las brasas y empanadillas gigantes de caldo caliente. La khinkali se come con la mano — hay técnica, y hay que aprenderla.</p>
+                        </div>
+                    </div>
+                    <div class="food-item reveal">
+                        <span class="food-emoji">🍷</span>
+                        <div>
+                            <h4>Vino en qvevri</h4>
+                            <p>Fermentado en ánforas de barro enterradas bajo tierra, como hace 8.000 años. El vino naranja georgiano no se parece a nada que hayas probado antes.</p>
+                        </div>
+                    </div>
+                    <div class="food-item reveal">
+                        <span class="food-emoji">🎉</span>
+                        <div>
+                            <h4>La Supra</h4>
+                            <p>El banquete tradicional georgiano, guiado por el tamada (maestro del brindis). Una cena que puede durar horas y que nadie olvida jamás.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- GALLERY -->
 <div class="gallery-section">
     <div class="gallery-header reveal">
@@ -1198,24 +1404,24 @@
     </div>
     <div class="gallery-grid">
         <div class="gallery-cell">
-            <img src="https://images.unsplash.com/photo-1565017229231-97d248b695e2?auto=format&fit=crop&w=900&q=80" alt="Kazbegi">
+            <img src="images/gallery-1.jpg" alt="Cañón Martvili" alt="Cañón Martvili">
             <div class="gallery-cell-label">Kazbegi y la Iglesia de Gergeti</div>
         </div>
         <div class="gallery-cell">
-            <img src="https://images.unsplash.com/photo-1528642463367-1d3a6d7f023d?auto=format&fit=crop&w=600&q=80" alt="Vino georgiano">
-            <div class="gallery-cell-label">Cultura del vino milenaria</div>
+            <img src="images/gallery-2.jpg" alt="Cañón con musgo" alt="Cañón con musgo">
+            <div class="gallery-cell-label">El bosque de musgo del Cáucaso</div>
         </div>
         <div class="gallery-cell">
-            <img src="https://images.unsplash.com/photo-1512918766671-5600111613d7?auto=format&fit=crop&w=600&q=80" alt="Tbilisi">
+            <img src="images/gallery-3.jpg" alt="Crónicas de Georgia" alt="Crónicas de Georgia">
             <div class="gallery-cell-label">Tbilisi Old Town</div>
         </div>
         <div class="gallery-cell">
-            <img src="https://images.unsplash.com/photo-1590736969596-be9b4a4bdb6c?auto=format&fit=crop&w=600&q=80" alt="Cañón Martvili">
-            <div class="gallery-cell-label">Cañón de Martvili</div>
+            <img src="images/gallery-4.jpg" alt="Garganta y cascada" alt="Garganta y cascada">
+            <div class="gallery-cell-label">Gargantas de Okatse</div>
         </div>
         <div class="gallery-cell">
-            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80" alt="Gastronomía">
-            <div class="gallery-cell-label">Gastronomía georgiana</div>
+            <img src="images/gallery-5.jpg" alt="Río turquesa" alt="Río turquesa">
+            <div class="gallery-cell-label">Río turquesa — sendero de Martvili</div>
         </div>
     </div>
 </div>
@@ -1260,6 +1466,9 @@
                         <span class="tag">Uplistsikhe</span>
                         <span class="tag">Trayecto</span>
                     </div>
+                    <div class="day-image">
+                        <img src="images/monasterio.jpg" alt="Monasterio en Georgia">
+                    </div>
                 </div>
             </div>
             <div class="day-item reveal">
@@ -1272,6 +1481,9 @@
                         <span class="tag">Gastronomía</span>
                         <span class="tag">Tbilisi</span>
                     </div>
+                    <div class="day-image">
+                        <img src="images/mercado.jpg" alt="Mercado en Tbilisi">
+                    </div>
                 </div>
             </div>
             <div class="day-item reveal">
@@ -1283,6 +1495,9 @@
                         <span class="tag">Montañas</span>
                         <span class="tag">Gergeti</span>
                         <span class="tag">Paisajes</span>
+                    </div>
+                    <div class="day-image">
+                        <img src="images/ananuri.jpg" alt="Fortaleza de Ananuri">
                     </div>
                 </div>
             </div>
@@ -1311,7 +1526,7 @@
             </div>
         </div>
         <div class="itinerary-image-panel">
-            <img src="https://images.unsplash.com/photo-1604537529428-15bcbeecfe4d?auto=format&fit=crop&w=700&q=80" alt="Kazbegi">
+            <img src="images/itinerary.jpg" alt="Cañón Martvili" alt="Cañón Martvili">
             <div class="itinerary-highlight">
                 <p>"Cuando llegamos a Kazbegi con las nubes a los pies de la iglesia, todo el grupo se quedó en silencio. Esos momentos no los vende ninguna agencia convencional."</p>
                 <cite>— Elena Rodríguez, viajera · Madrid</cite>
@@ -1319,6 +1534,51 @@
         </div>
     </div>
 </section>
+
+<!-- EXPANDED GALLERY -->
+<div class="gallery2-section">
+    <div class="gallery2-inner">
+        <p class="section-label reveal">Más rincones del viaje</p>
+        <h2 class="section-title reveal">Lugares que te van a<br><em>dejar sin palabras</em></h2>
+        <div class="gallery2-grid">
+            <div class="gallery2-cell tall reveal">
+                <img src="images/ananuri.jpg" alt="Fortaleza de Ananuri">
+                <div class="gallery2-label">
+                    <span>Fortaleza de Ananuri</span>
+                    <small>Carretera Militar · Día 5</small>
+                </div>
+            </div>
+            <div class="gallery2-cell reveal">
+                <img src="images/monasterio.jpg" alt="Monasterio georgiano">
+                <div class="gallery2-label">
+                    <span>Monasterios medievales</span>
+                    <small>Ruta a Tbilisi · Día 3</small>
+                </div>
+            </div>
+            <div class="gallery2-cell reveal">
+                <img src="images/tanatorio.jpg" alt="Monumento histórico">
+                <div class="gallery2-label">
+                    <span>Historia milenaria</span>
+                    <small>Tbilisi</small>
+                </div>
+            </div>
+            <div class="gallery2-cell reveal">
+                <img src="images/mercado.jpg" alt="Mercado de Tbilisi">
+                <div class="gallery2-label">
+                    <span>Mercado de Tbilisi</span>
+                    <small>Ciudad Vieja · Día 4</small>
+                </div>
+            </div>
+            <div class="gallery2-cell reveal">
+                <img src="images/comida.jpg" alt="Gastronomía georgiana">
+                <div class="gallery2-label">
+                    <span>La mesa georgiana</span>
+                    <small>Cada día del viaje</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- PRICING -->
 <div id="pricing" class="pricing-section">
