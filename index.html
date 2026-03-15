@@ -1207,6 +1207,465 @@
             footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
             .footer-links { flex-wrap: wrap; gap: 16px; }
         }
+        /* ─── SCROLL PROGRESS ───────────────────────── */
+        .scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            background: var(--red);
+            z-index: 9999;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* ─── HAMBURGER ─────────────────────────────── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ─── MOBILE MENU ───────────────────────────── */
+        .mobile-menu {
+            position: fixed;
+            top: 0; right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--dark);
+            z-index: 2000;
+            padding: 80px 40px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.open { right: 0; }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 24px; right: 24px;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .mobile-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            letter-spacing: 0.04em;
+            transition: color 0.2s;
+        }
+        .mobile-link:hover { color: white; }
+        .mobile-link-cta {
+            margin-top: 16px;
+            background: var(--red);
+            color: white !important;
+            padding: 14px 20px;
+            border-radius: 2px;
+            text-align: center;
+            border: none;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 1999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+        .mobile-overlay.open { opacity: 1; pointer-events: all; }
+
+        /* ─── COUNTDOWN BANNER ──────────────────────── */
+        .countdown-banner {
+            background: var(--red);
+            padding: 14px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-label {
+            color: rgba(255,255,255,0.9);
+            font-size: 13px;
+            letter-spacing: 0.05em;
+        }
+
+        .countdown-timer {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ct-block {
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+            padding: 6px 12px;
+            border-radius: 3px;
+            min-width: 52px;
+        }
+
+        .ct-block span {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: white;
+            line-height: 1;
+        }
+
+        .ct-block small {
+            font-size: 9px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .ct-sep {
+            color: rgba(255,255,255,0.5);
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .countdown-cta {
+            color: white;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 8px 18px;
+            border-radius: 2px;
+            transition: background 0.2s;
+        }
+        .countdown-cta:hover { background: rgba(255,255,255,0.15); }
+
+        /* ─── ACTIVE NAV LINK ───────────────────────── */
+        .nav-links a.active { color: white; border-bottom: 1px solid var(--light-warm); padding-bottom: 1px; }
+
+        /* ─── LIGHTBOX ──────────────────────────────── */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(10,8,6,0.96);
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .lightbox.open { opacity: 1; pointer-events: all; }
+
+        .lightbox-img-wrap {
+            max-width: 90vw;
+            max-height: 90vh;
+            text-align: center;
+        }
+
+        .lightbox-img-wrap img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 2px;
+            transition: opacity 0.15s;
+        }
+
+        .lightbox-caption {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            margin-top: 16px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px; right: 28px;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .lightbox-close:hover { color: white; }
+
+        .lightbox-prev, .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: white;
+            font-size: 32px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+        .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.15); }
+
+        /* ─── PRICE CALCULATOR ──────────────────────── */
+        .calc-section {
+            background: white;
+            padding: 100px 60px;
+        }
+
+        .calc-inner { max-width: 1000px; margin: 0 auto; }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+            align-items: start;
+        }
+
+        .calc-field { margin-bottom: 32px; }
+
+        .calc-field label {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .calc-stepper {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            border: 1px solid rgba(26,22,18,0.15);
+            border-radius: 3px;
+            overflow: hidden;
+            width: fit-content;
+        }
+
+        .stepper-btn {
+            width: 48px;
+            height: 48px;
+            background: var(--cream);
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--dark);
+            transition: background 0.2s;
+        }
+        .stepper-btn:hover { background: #ebe6dc; }
+
+        .calc-stepper input {
+            width: 80px;
+            height: 48px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid rgba(26,22,18,0.1);
+            border-right: 1px solid rgba(26,22,18,0.1);
+            font-size: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--dark);
+            outline: none;
+            -moz-appearance: textfield;
+        }
+        .calc-stepper input::-webkit-outer-spin-button,
+        .calc-stepper input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+        .calc-extras { display: flex; flex-direction: column; gap: 10px; }
+
+        .calc-extra-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 12px 16px;
+            border: 1px solid rgba(26,22,18,0.1);
+            border-radius: 3px;
+            transition: border-color 0.2s, background 0.2s;
+            font-size: 14px;
+            color: var(--text);
+        }
+        .calc-extra-item:hover { border-color: var(--red); background: rgba(200,64,47,0.03); }
+        .calc-extra-item input { accent-color: var(--red); width: 16px; height: 16px; flex-shrink: 0; }
+
+        .calc-result-inner {
+            background: var(--dark);
+            border-radius: 4px;
+            padding: 40px;
+        }
+
+        .calc-total-label {
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--light-warm);
+            margin-bottom: 8px;
+        }
+
+        .calc-total {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 300;
+            color: white;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .calc-bar-wrap {
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin-bottom: 24px;
+        }
+
+        .calc-bar {
+            height: 100%;
+            background: var(--red);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .calc-breakdown { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; }
+
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 14px;
+            color: rgba(245,240,232,0.6);
+        }
+        .calc-row strong { color: var(--cream); font-weight: 500; }
+
+        /* ─── FOOTER UPGRADE ────────────────────────── */
+        footer {
+            background: #0F0C0A;
+            padding: 0;
+            display: block;
+        }
+
+        .footer-top {
+            padding: 60px 60px 40px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--cream); }
+        .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 6px; line-height: 1.6; max-width: 260px; }
+
+        .footer-social { display: flex; gap: 12px; margin-top: 24px; }
+        .social-link {
+            width: 38px; height: 38px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .social-link:hover { border-color: var(--light-warm); color: var(--light-warm); }
+
+        .footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+
+        .footer-col h4 {
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--light-warm);
+            margin-bottom: 16px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 13px;
+            padding: 5px 0;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--cream); }
+
+        .footer-countdown {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .fc-block {
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 8px 10px;
+            border-radius: 3px;
+        }
+        .fc-block span {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--cream);
+            line-height: 1;
+        }
+        .fc-block small { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+        .footer-next-date { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+        .footer-bottom {
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.2);
+        }
+
+        /* ─── RESPONSIVE ADDITIONS ──────────────────── */
+        @media (max-width: 900px) {
+            .hamburger { display: flex; }
+            .countdown-banner { padding: 12px 20px; gap: 12px; justify-content: space-between; }
+            .countdown-label { display: none; }
+            .calc-section { padding: 70px 24px; }
+            .calc-grid { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr; padding: 40px 24px; gap: 32px; }
+            .footer-cols { grid-template-columns: 1fr 1fr; }
+            .footer-bottom { padding: 16px 24px; flex-direction: column; gap: 8px; text-align: center; }
+            .lightbox-prev { left: 8px; }
+            .lightbox-next { right: 8px; }
+        }
     </style>
 </head>
 <body>
@@ -1222,6 +1681,9 @@
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#booking" class="nav-cta">Reservar</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+    </button>
 </nav>
 
 <!-- HERO -->
@@ -1241,6 +1703,19 @@
         <span>Scroll</span>
     </div>
 </section>
+
+<!-- COUNTDOWN BANNER -->
+<div class="countdown-banner">
+    <span class="countdown-label">⏳ Próxima salida · 10 Mayo 2026 · Solo 4 plazas</span>
+    <div class="countdown-timer">
+        <div class="ct-block"><span id="countdown-days">--</span><small>días</small></div>
+        <div class="ct-sep">:</div>
+        <div class="ct-block"><span id="countdown-hours">--</span><small>horas</small></div>
+        <div class="ct-sep">:</div>
+        <div class="ct-block"><span id="countdown-mins">--</span><small>min</small></div>
+    </div>
+    <a href="#booking" class="countdown-cta">Reservar plaza →</a>
+</div>
 
 <!-- STATS -->
 <div class="stats-bar">
@@ -1749,6 +2224,66 @@
     </div>
 </section>
 
+<!-- PRICE CALCULATOR -->
+<section class="calc-section">
+    <div class="calc-inner">
+        <div class="calc-header">
+            <p class="section-label reveal">Calcula tu viaje</p>
+            <h2 class="section-title reveal">¿Cuánto te va a costar<br><em>la experiencia de tu vida?</em></h2>
+        </div>
+        <div class="calc-grid">
+            <div class="calc-controls reveal">
+                <div class="calc-field">
+                    <label>¿Cuántas personas viajáis?</label>
+                    <div class="calc-stepper">
+                        <button onclick="const i=document.getElementById('calcPeople'); if(i.value>1){i.value=parseInt(i.value)-1;updateCalculator()}" class="stepper-btn">−</button>
+                        <input type="number" id="calcPeople" value="1" min="1" max="4" oninput="updateCalculator()">
+                        <button onclick="const i=document.getElementById('calcPeople'); if(i.value<4){i.value=parseInt(i.value)+1;updateCalculator()}" class="stepper-btn">+</button>
+                    </div>
+                </div>
+                <div class="calc-field">
+                    <label>Extras opcionales</label>
+                    <div class="calc-extras">
+                        <label class="calc-extra-item">
+                            <input type="checkbox" class="calc-extra" value="80" onchange="updateCalculator()">
+                            <span>Seguro de viaje premium · +80€</span>
+                        </label>
+                        <label class="calc-extra-item">
+                            <input type="checkbox" class="calc-extra" value="120" onchange="updateCalculator()">
+                            <span>Habitación individual garantizada · +120€</span>
+                        </label>
+                        <label class="calc-extra-item">
+                            <input type="checkbox" class="calc-extra" value="60" onchange="updateCalculator()">
+                            <span>Experiencia de cata de vino extra · +60€</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="calc-result reveal">
+                <div class="calc-result-inner">
+                    <div class="calc-total-label">Total estimado</div>
+                    <div class="calc-total" id="calcTotal">1.250€</div>
+                    <div class="calc-bar-wrap">
+                        <div class="calc-bar" id="calcBar" style="width:21%"></div>
+                    </div>
+                    <div class="calc-breakdown">
+                        <div class="calc-row">
+                            <span>Depósito para reservar</span>
+                            <strong id="calcDeposit">350€</strong>
+                        </div>
+                        <div class="calc-row">
+                            <span>Resto (30 días antes)</span>
+                            <strong id="calcRest">900€</strong>
+                        </div>
+                    </div>
+                    <a href="#booking" class="btn-primary" style="display:block;text-align:center;margin-top:24px;border-radius:2px;">Reservar con este precio</a>
+                    <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:10px;">Los vuelos no están incluidos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- BOOKING -->
 <section id="booking" class="booking-section">
     <div class="booking-inner">
@@ -1826,18 +2361,51 @@
 
 <!-- FOOTER -->
 <footer>
-    <div>
-        <div class="footer-brand">Georgia Travel Experience</div>
-        <div class="footer-tagline">Aventuras auténticas en el Cáucaso · 2026</div>
+    <div class="footer-top">
+        <div class="footer-brand-block">
+            <div class="footer-brand">Georgia Travel Experience</div>
+            <div class="footer-tagline">Aventuras auténticas en el Cáucaso · Grupos pequeños · Desde 2024</div>
+            <div class="footer-social">
+                <a href="https://www.tiktok.com/@connectgeorgia" target="_blank" class="social-link" aria-label="TikTok">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/connectgeorgia" target="_blank" class="social-link" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="mailto:hola@connectgeorgia.com" class="social-link" aria-label="Email">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>El viaje</h4>
+                <a href="#about">La experiencia</a>
+                <a href="#itinerary">Itinerario 7 días</a>
+                <a href="#pricing">Precios</a>
+                <a href="#booking">Reservar plaza</a>
+            </div>
+            <div class="footer-col">
+                <h4>Georgia</h4>
+                <a href="#why">Por qué ir</a>
+                <a href="#faq">Preguntas frecuentes</a>
+                <a href="#reviews">Opiniones</a>
+            </div>
+            <div class="footer-col">
+                <h4>Próxima salida</h4>
+                <div class="footer-countdown" id="footerCountdown">
+                    <div class="fc-block"><span id="fcDays">--</span><small>días</small></div>
+                    <div class="fc-block"><span id="fcHours">--</span><small>horas</small></div>
+                    <div class="fc-block"><span id="fcMins">--</span><small>min</small></div>
+                </div>
+                <p class="footer-next-date">10–16 Mayo 2026 · 4 plazas</p>
+            </div>
+        </div>
     </div>
-    <ul class="footer-links">
-        <li><a href="#about">Experiencia</a></li>
-        <li><a href="#itinerary">Itinerario</a></li>
-        <li><a href="#pricing">Precios</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#booking">Reservar</a></li>
-    </ul>
-    <div class="footer-copy">© 2026 Georgia Travel Experience</div>
+    <div class="footer-bottom">
+        <span>© 2026 Georgia Travel Experience</span>
+        <span>Hecho con ❤️ para viajeros curiosos</span>
+    </div>
 </footer>
 
 <!-- NOTIFICATION -->
@@ -1845,57 +2413,267 @@
     ✓ Solicitud enviada. Te contactamos en menos de 24h.
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <button class="lightbox-prev" id="lightboxPrev">‹</button>
+    <button class="lightbox-next" id="lightboxNext">›</button>
+    <div class="lightbox-img-wrap">
+        <img id="lightboxImg" src="" alt="">
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+    <a href="#about" class="mobile-link">Experiencia</a>
+    <a href="#why" class="mobile-link">Por qué Georgia</a>
+    <a href="#itinerary" class="mobile-link">Itinerario</a>
+    <a href="#pricing" class="mobile-link">Precios</a>
+    <a href="#faq" class="mobile-link">FAQ</a>
+    <a href="#booking" class="mobile-link mobile-link-cta">Reservar plaza</a>
+</div>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
 <script>
-    // Navbar scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 60);
-    });
+// ─── SCROLL PROGRESS BAR ────────────────────────────
+const progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    progressBar.style.width = scrolled + '%';
+});
 
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => entry.target.classList.add('visible'), i * 60);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+// ─── NAVBAR ─────────────────────────────────────────
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
 
-    reveals.forEach(el => observer.observe(el));
+// ─── MOBILE MENU ────────────────────────────────────
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileOverlay');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
 
-    // FAQ accordion
-    document.querySelectorAll('.faq-question').forEach(q => {
-        q.addEventListener('click', () => {
-            const item = q.parentElement;
-            const wasOpen = item.classList.contains('open');
-            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-            if (!wasOpen) item.classList.add('open');
-        });
-    });
+function openMenu() {
+    mobileMenu.classList.add('open');
+    mobileOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+    mobileMenu.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
 
-    // Form submit
-    function handleSubmit() {
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const date = document.getElementById('date').value;
+hamburger.addEventListener('click', openMenu);
+mobileMenuClose.addEventListener('click', closeMenu);
+mobileOverlay.addEventListener('click', closeMenu);
+document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
 
-        if (!name || !email || !date) {
-            alert('Por favor, rellena nombre, email y fecha preferida.');
-            return;
+// ─── PARALLAX HERO ──────────────────────────────────
+const heroBg = document.querySelector('.hero-bg');
+window.addEventListener('scroll', () => {
+    if (window.scrollY < window.innerHeight) {
+        heroBg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+    }
+});
+
+// ─── SCROLL REVEAL ──────────────────────────────────
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            revealObserver.unobserve(entry.target);
         }
+    });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+reveals.forEach(el => revealObserver.observe(el));
 
+// ─── COUNTER ANIMATION ──────────────────────────────
+function animateCounter(el, target, suffix = '') {
+    let start = 0;
+    const duration = 1800;
+    const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(ease * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const nums = entry.target.querySelectorAll('.stat-number');
+            nums.forEach(n => {
+                const text = n.textContent;
+                if (text === '7') animateCounter(n, 7);
+                else if (text === '1250€') { animateCounter(n, 1250); setTimeout(() => n.textContent = '1250€', 1850); }
+                else if (text === '100%') { animateCounter(n, 100); setTimeout(() => n.textContent = '100%', 1850); }
+            });
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+const statsBar = document.querySelector('.stats-bar');
+if (statsBar) statsObserver.observe(statsBar);
+
+// ─── LIGHTBOX ───────────────────────────────────────
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCaption = document.getElementById('lightboxCaption');
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+function buildLightboxSet() {
+    lightboxImages = [];
+    document.querySelectorAll('.gallery-cell img, .gallery2-cell img').forEach(img => {
+        const label = img.closest('.gallery-cell, .gallery2-cell')?.querySelector('.gallery-cell-label, .gallery2-label span');
+        lightboxImages.push({ src: img.src, caption: label ? label.textContent : '' });
+    });
+}
+
+function openLightbox(index) {
+    lightboxIndex = index;
+    lightboxImg.src = lightboxImages[index].src;
+    lightboxCaption.textContent = lightboxImages[index].caption;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function lightboxNav(dir) {
+    lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+    lightboxImg.style.opacity = '0';
+    setTimeout(() => {
+        lightboxImg.src = lightboxImages[lightboxIndex].src;
+        lightboxCaption.textContent = lightboxImages[lightboxIndex].caption;
+        lightboxImg.style.opacity = '1';
+    }, 150);
+}
+
+buildLightboxSet();
+
+document.querySelectorAll('.gallery-cell, .gallery2-cell').forEach((cell, i) => {
+    cell.style.cursor = 'zoom-in';
+    cell.addEventListener('click', () => openLightbox(i));
+});
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev').addEventListener('click', () => lightboxNav(-1));
+document.getElementById('lightboxNext').addEventListener('click', () => lightboxNav(1));
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lightboxNav(-1);
+    if (e.key === 'ArrowRight') lightboxNav(1);
+});
+
+// ─── PRICE CALCULATOR ───────────────────────────────
+function updateCalculator() {
+    const people = parseInt(document.getElementById('calcPeople').value);
+    const extras = [];
+    document.querySelectorAll('.calc-extra:checked').forEach(cb => extras.push(parseFloat(cb.value)));
+    const base = 1250 * people;
+    const extraTotal = extras.reduce((a, b) => a + b, 0) * people;
+    const deposit = 350 * people;
+    const total = base + extraTotal;
+    document.getElementById('calcTotal').textContent = total.toLocaleString('es-ES') + '€';
+    document.getElementById('calcDeposit').textContent = deposit.toLocaleString('es-ES') + '€';
+    document.getElementById('calcRest').textContent = (total - deposit).toLocaleString('es-ES') + '€';
+
+    const bar = document.getElementById('calcBar');
+    const pct = Math.min((total / 6000) * 100, 100);
+    bar.style.width = pct + '%';
+}
+
+// ─── COUNTDOWN TIMER ────────────────────────────────
+function updateCountdown() {
+    const target = new Date('2026-05-10T00:00:00');
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) return;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+    ['countdown-days','countdown-hours','countdown-mins'].forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = [days, hours, mins][i];
+    });
+    const fd = document.getElementById('fcDays');
+    const fh = document.getElementById('fcHours');
+    const fm = document.getElementById('fcMins');
+    if (fd) fd.textContent = days;
+    if (fh) fh.textContent = hours;
+    if (fm) fm.textContent = mins;
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+// ─── FAQ ────────────────────────────────────────────
+document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+    });
+});
+
+// ─── FORM SUBMIT ────────────────────────────────────
+function handleSubmit() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const date = document.getElementById('date').value;
+    if (!name || !email || !date) {
+        alert('Por favor, rellena nombre, email y fecha preferida.');
+        return;
+    }
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    setTimeout(() => {
         const notification = document.getElementById('notification');
         notification.classList.add('show');
-        setTimeout(() => notification.classList.remove('show'), 4000);
-
+        setTimeout(() => notification.classList.remove('show'), 5000);
+        btn.textContent = 'Reservar mi plaza · 350€ depósito';
+        btn.disabled = false;
         document.getElementById('name').value = '';
         document.getElementById('email').value = '';
         document.getElementById('date').value = '';
         document.getElementById('message').value = '';
-    }
+    }, 1200);
+}
+
+// ─── ACTIVE NAV LINK ────────────────────────────────
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+            if (active) active.classList.add('active');
+        }
+    });
+}, { threshold: 0.4 });
+sections.forEach(s => sectionObserver.observe(s));
 </script>
+
 
 </body>
 </html>
