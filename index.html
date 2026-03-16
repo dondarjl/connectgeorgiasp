@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Connect <span translate="no">Georgia</span> | El Secreto Mejor Guardado de Europa</title>
+    <title>Connect Georgia | El Secreto Mejor Guardado de Europa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -1667,13 +1667,40 @@
             .lightbox-next { right: 8px; }
         }
 
-        </style>
+    
+        /* ─── LANGUAGE SWITCHER ─────────────────────── */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            font-size: 11px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            padding: 6px 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-btn.active { background: rgba(255,255,255,0.15); color: white; }
+        .lang-btn:hover:not(.active) { color: rgba(255,255,255,0.8); }
+        .lang-sep { width: 1px; background: rgba(255,255,255,0.2); height: 20px; }
+    </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="navbar">
-    <a class="nav-logo" href="#">Connect <span translate="no">Georgia</span></a>
+    <a class="nav-logo" href="#" translate="no">Connect Georgia</a>
     <ul class="nav-links">
         <li><a href="#about">Experiencia</a></li>
         <li><a href="#why">Por qué <span translate="no">Georgia</span></a></li>
@@ -1682,6 +1709,11 @@
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#booking" class="nav-cta">Reservar</a></li>
     </ul>
+    <div class="lang-switcher">
+        <button class="lang-btn active" id="btnES" onclick="switchLang('es')">ES</button>
+        <div class="lang-sep"></div>
+        <button class="lang-btn" id="btnEN" onclick="switchLang('en')">EN</button>
+    </div>
     <div id="google_translate_element"></div>
     <button class="hamburger" id="hamburger" aria-label="Menú">
         <span></span><span></span><span></span>
@@ -1745,7 +1777,7 @@
     <h2 class="section-title reveal">Viajes que <em>transforman,</em><br>no paquetes turísticos</h2>
     <div class="about-grid">
         <div class="about-image reveal">
-            <img src="images/about.jpg" alt="<span translate="no">Georgia</span>" alt="<span translate="no">Georgia</span>">
+            <img src="images/about.jpg" alt="Georgia" alt="Georgia">
             <div class="about-image-badge">
                 <div class="badge-number">4.9</div>
                 <div class="badge-text">Valoración media</div>
@@ -1833,7 +1865,7 @@
     <div class="food-inner">
         <div class="food-grid">
             <div class="food-image reveal">
-                <img src="images/comida.jpg" alt="Gastronomía <span translate="no">georgiana</span>">
+                <img src="images/comida.jpg" alt="Gastronomía georgiana">
             </div>
             <div class="food-text">
                 <p class="section-label reveal">La mesa <span translate="no">georgiana</span></p>
@@ -1881,7 +1913,7 @@
     </div>
     <div class="gallery-grid">
         <div class="gallery-cell">
-            <img src="images/gallery-1.jpg" alt="Cañón <span translate="no">Martvili</span>" alt="Cañón <span translate="no">Martvili</span>">
+            <img src="images/gallery-1.jpg" alt="Cañón Martvili" alt="Cañón Martvili">
             <div class="gallery-cell-label"><span translate="no">Kazbegi</span> y la Iglesia de <span translate="no">Gergeti</span></div>
         </div>
         <div class="gallery-cell">
@@ -1889,7 +1921,7 @@
             <div class="gallery-cell-label">El bosque de musgo del <span translate="no">Cáucaso</span></div>
         </div>
         <div class="gallery-cell">
-            <img src="images/gallery-3.jpg" alt="Crónicas de <span translate="no">Georgia</span>" alt="Crónicas de <span translate="no">Georgia</span>">
+            <img src="images/gallery-3.jpg" alt="Crónicas de Georgia" alt="Crónicas de Georgia">
             <div class="gallery-cell-label"><span translate="no">Tbilisi</span> Old Town</div>
         </div>
         <div class="gallery-cell">
@@ -1944,7 +1976,7 @@
                         <span class="tag">Trayecto</span>
                     </div>
                     <div class="day-image">
-                        <img src="images/monasterio.jpg" alt="Monasterio en <span translate="no">Georgia</span>">
+                        <img src="images/monasterio.jpg" alt="Monasterio en Georgia">
                     </div>
                 </div>
             </div>
@@ -1959,7 +1991,7 @@
                         <span class="tag"><span translate="no">Tbilisi</span></span>
                     </div>
                     <div class="day-image">
-                        <img src="images/mercado.jpg" alt="Mercado en <span translate="no">Tbilisi</span>">
+                        <img src="images/mercado.jpg" alt="Mercado en Tbilisi">
                     </div>
                 </div>
             </div>
@@ -1974,7 +2006,7 @@
                         <span class="tag">Paisajes</span>
                     </div>
                     <div class="day-image">
-                        <img src="images/ananuri.jpg" alt="Fortaleza de <span translate="no">Ananuri</span>">
+                        <img src="images/ananuri.jpg" alt="Fortaleza de Ananuri">
                     </div>
                 </div>
             </div>
@@ -2003,7 +2035,7 @@
             </div>
         </div>
         <div class="itinerary-image-panel">
-            <img src="images/itinerary.jpg" alt="Cañón <span translate="no">Martvili</span>" alt="Cañón <span translate="no">Martvili</span>">
+            <img src="images/itinerary.jpg" alt="Cañón Martvili" alt="Cañón Martvili">
             <div class="itinerary-highlight">
                 <p>"Cuando llegamos a <span translate="no">Kazbegi</span> con las nubes a los pies de la iglesia, todo el grupo se quedó en silencio. Esos momentos no los vende ninguna agencia convencional."</p>
                 <cite>— Elena Rodríguez, viajera · Madrid</cite>
@@ -2019,14 +2051,14 @@
         <h2 class="section-title reveal">Lugares que te van a<br><em>dejar sin palabras</em></h2>
         <div class="gallery2-grid">
             <div class="gallery2-cell tall reveal">
-                <img src="images/ananuri.jpg" alt="Fortaleza de <span translate="no">Ananuri</span>">
+                <img src="images/ananuri.jpg" alt="Fortaleza de Ananuri">
                 <div class="gallery2-label">
                     <span>Fortaleza de <span translate="no">Ananuri</span></span>
                     <small>Carretera Militar · Día 5</small>
                 </div>
             </div>
             <div class="gallery2-cell reveal">
-                <img src="images/monasterio.jpg" alt="Monasterio <span translate="no">georgiano</span>">
+                <img src="images/monasterio.jpg" alt="Monasterio georgiano">
                 <div class="gallery2-label">
                     <span>Monasterios medievales</span>
                     <small>Ruta a <span translate="no">Tbilisi</span> · Día 3</small>
@@ -2040,14 +2072,14 @@
                 </div>
             </div>
             <div class="gallery2-cell reveal">
-                <img src="images/mercado.jpg" alt="Mercado de <span translate="no">Tbilisi</span>">
+                <img src="images/mercado.jpg" alt="Mercado de Tbilisi">
                 <div class="gallery2-label">
                     <span>Mercado de <span translate="no">Tbilisi</span></span>
                     <small>Ciudad Vieja · Día 4</small>
                 </div>
             </div>
             <div class="gallery2-cell reveal">
-                <img src="images/comida.jpg" alt="Gastronomía <span translate="no">georgiana</span>">
+                <img src="images/comida.jpg" alt="Gastronomía georgiana">
                 <div class="gallery2-label">
                     <span>La mesa <span translate="no">georgiana</span></span>
                     <small>Cada día del viaje</small>
@@ -2684,42 +2716,131 @@ sections.forEach(s => sectionObserver.observe(s));
 
 
 
-<!-- Google Translate -->
-<script type="text/javascript">
-function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-        pageLanguage: 'es',
-        includedLanguages: 'en,es',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
-    }, 'google_translate_element');
-}
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+<!-- Language Switcher -->
 <style>
-/* ─── GOOGLE TRANSLATE STYLING ─── */
-#google_translate_element { display: flex; align-items: center; }
-.goog-te-gadget { font-size: 0 !important; }
+.lang-switcher { display:flex; align-items:center; margin-left:8px; border:1px solid rgba(255,255,255,0.25); border-radius:3px; overflow:hidden; flex-shrink:0; }
+.lang-btn { background:none; border:none; color:rgba(255,255,255,0.5); font-size:11px; font-family:'DM Sans',sans-serif; font-weight:500; letter-spacing:0.1em; padding:6px 10px; cursor:pointer; transition:all 0.2s; }
+.lang-btn.active { background:rgba(255,255,255,0.15); color:white; }
+.lang-btn:hover:not(.active) { color:rgba(255,255,255,0.8); }
+.lang-sep { width:1px; background:rgba(255,255,255,0.2); height:20px; }
+/* Hide Google Translate bar */
+.goog-te-banner-frame, .skiptranslate { display:none !important; }
+body { top:0 !important; }
+</style>
+
+<script>
+function switchLang(lang) {
+    // Update button styles
+    document.getElementById('btnES').classList.toggle('active', lang === 'es');
+    document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+    localStorage.setItem('cg-lang', lang);
+
+    if (lang === 'en') {
+        // Set Google Translate cookie and reload
+        document.cookie = "googtrans=/es/en; path=/";
+        document.cookie = "googtrans=/es/en; domain=" + window.location.hostname + "; path=/";
+    } else {
+        // Clear translation cookies
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/";
+    }
+    window.location.reload();
+}
+
+// On load, set correct button state
+(function() {
+    const saved = localStorage.getItem('cg-lang') || 'es';
+    if (saved === 'en') {
+        document.getElementById('btnES').classList.remove('active');
+        document.getElementById('btnEN').classList.add('active');
+    }
+})();
+</script>
+
+<!-- Google Translate (hidden, runs via cookie) -->
+
+
+
+
+
+<script>
+// ─── LANGUAGE SWITCHER ───────────────────────────────
+// Uses Google Translate's free URL-based API — works on GitHub Pages
+// No widget, no external dependency issues
+
+const GT_BASE = 'https://translate.google.com/translate?sl=es&tl=';
+const PAGE_URL = encodeURIComponent(window.location.href.split('?')[0]);
+
+function translatePage(lang) {
+    if (lang === 'en') {
+        // Store preference and redirect through Google Translate
+        sessionStorage.setItem('cg-lang', 'en');
+        window.location.href = GT_BASE + 'en&u=' + PAGE_URL;
+    } else {
+        // Go back to original Spanish page
+        sessionStorage.removeItem('cg-lang');
+        // If currently on translate.google.com, go back to original
+        if (window.location.hostname.includes('translate.google')) {
+            window.location.href = decodeURIComponent(PAGE_URL);
+        } else {
+            // Already on original, just update button state
+            document.getElementById('btnES').classList.add('active');
+            document.getElementById('btnEN').classList.remove('active');
+        }
+    }
+}
+
+// Set button state on load
+document.addEventListener('DOMContentLoaded', function() {
+    const isTranslated = window.location.hostname.includes('translate.google');
+    document.getElementById('btnES').classList.toggle('active', !isTranslated);
+    document.getElementById('btnEN').classList.toggle('active', isTranslated);
+});
+</script>
+
+
+
+
+
+<!-- GOOGLE TRANSLATE -->
+<style>
+#google_translate_element { display: flex; align-items: center; margin-left: 4px; }
+.goog-te-gadget { font-size: 0 !important; line-height: 0; }
 .goog-te-gadget .goog-te-combo {
     background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.3);
     color: white;
     font-family: 'DM Sans', sans-serif;
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.1em;
     padding: 6px 10px;
     border-radius: 3px;
     cursor: pointer;
     outline: none;
+    appearance: none;
     -webkit-appearance: none;
 }
+.goog-te-gadget .goog-te-combo:hover { background: rgba(255,255,255,0.2); }
 .goog-te-gadget .goog-te-combo option { background: #1A1612; color: white; }
-.goog-te-banner-frame, .skiptranslate { display: none !important; }
-body { top: 0 !important; }
-.goog-te-menu-value span { display: none; }
+.goog-te-banner-frame.skiptranslate { display: none !important; }
+.skiptranslate { display: none !important; }
+body { top: 0 !important; position: static !important; }
+iframe.skiptranslate { display: none !important; }
 </style>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        includedLanguages: 'es,en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false,
+        multilanguagePage: false
+    }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
