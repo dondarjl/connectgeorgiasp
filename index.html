@@ -1666,6 +1666,39 @@
             .lightbox-prev { left: 8px; }
             .lightbox-next { right: 8px; }
         }
+
+        /* ─── LANGUAGE SWITCHER ─────────────────────── */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            font-size: 11px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            padding: 6px 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+        .lang-btn:hover:not(.active) { color: rgba(255,255,255,0.8); }
+        .lang-sep { width: 1px; background: rgba(255,255,255,0.2); height: 20px; }
+
+        /* fade transition on lang switch */
+        body.lang-transitioning * { transition: opacity 0.15s ease !important; opacity: 0.4; }
     </style>
 </head>
 <body>
@@ -1674,13 +1707,18 @@
 <nav id="navbar">
     <a class="nav-logo" href="#">Georgia Travel</a>
     <ul class="nav-links">
-        <li><a href="#about">Experiencia</a></li>
-        <li><a href="#why">Por qué Georgia</a></li>
-        <li><a href="#itinerary">Itinerario</a></li>
-        <li><a href="#pricing">Precios</a></li>
+        <li><a href="#about" data-i18n="Experiencia">Experiencia</a></li>
+        <li><a href="#why" data-i18n="Por qué Georgia">Por qué Georgia</a></li>
+        <li><a href="#itinerary" data-i18n="Itinerario">Itinerario</a></li>
+        <li><a href="#pricing" data-i18n="Precios">Precios</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#booking" class="nav-cta">Reservar</a></li>
+        <li><a href="#booking" class="nav-cta" data-i18n="Reservar">Reservar</a></li>
     </ul>
+    <div class="lang-switcher">
+        <button class="lang-btn active" id="btnES" onclick="setLang('es')">ES</button>
+        <div class="lang-sep"></div>
+        <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+    </div>
     <button class="hamburger" id="hamburger" aria-label="Menú">
         <span></span><span></span><span></span>
     </button>
@@ -1690,12 +1728,12 @@
 <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-        <p class="hero-label">Cáucaso · Grupos pequeños · 7 días</p>
-        <h1>El secreto <em>mejor guardado</em> de Europa</h1>
+        <p class="hero-label" data-i18n="Cáucaso · Grupos pequeños · 7 días">Cáucaso · Grupos pequeños · 7 días</p>
+        <h1 data-i18n="El secreto <em>mejor guardado</em> de Europa">El secreto <em>mejor guardado</em> de Europa</h1>
         <p>Viajes en grupos reducidos a Georgia para viajeros europeos que buscan cultura auténtica, montañas dramáticas y hospitalidad sin igual.</p>
         <div class="hero-actions">
-            <a href="#booking" class="btn-primary">Reserva tu plaza</a>
-            <a href="#itinerary" class="btn-ghost">Ver itinerario</a>
+            <a href="#booking" class="btn-primary" data-i18n="Reserva tu plaza">Reserva tu plaza</a>
+            <a href="#itinerary" class="btn-ghost" data-i18n="Ver itinerario">Ver itinerario</a>
         </div>
     </div>
     <div class="hero-scroll">
@@ -1706,7 +1744,7 @@
 
 <!-- COUNTDOWN BANNER -->
 <div class="countdown-banner">
-    <span class="countdown-label">⏳ Próxima salida · 10 Mayo 2026 · Solo 4 plazas</span>
+    <span class="countdown-label" data-i18n="⏳ Próxima salida · 10 Mayo 2026 · Solo 4 plazas">⏳ Próxima salida · 10 Mayo 2026 · Solo 4 plazas</span>
     <div class="countdown-timer">
         <div class="ct-block"><span id="countdown-days">--</span><small>días</small></div>
         <div class="ct-sep">:</div>
@@ -1714,18 +1752,18 @@
         <div class="ct-sep">:</div>
         <div class="ct-block"><span id="countdown-mins">--</span><small>min</small></div>
     </div>
-    <a href="#booking" class="countdown-cta">Reservar plaza →</a>
+    <a href="#booking" class="countdown-cta" data-i18n="Reservar plaza →">Reservar plaza →</a>
 </div>
 
 <!-- STATS -->
 <div class="stats-bar">
     <div class="stat">
         <div class="stat-number">7</div>
-        <div class="stat-label">Días de viaje</div>
+        <div class="stat-label" data-i18n="Días de viaje">Días de viaje</div>
     </div>
     <div class="stat">
         <div class="stat-number">8–15</div>
-        <div class="stat-label">Personas por grupo</div>
+        <div class="stat-label" data-i18n="Personas por grupo">Personas por grupo</div>
     </div>
     <div class="stat">
         <div class="stat-number">1250€</div>
@@ -1733,20 +1771,20 @@
     </div>
     <div class="stat">
         <div class="stat-number">100%</div>
-        <div class="stat-label">Experiencias locales</div>
+        <div class="stat-label" data-i18n="Experiencias locales">Experiencias locales</div>
     </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about" class="section">
-    <p class="section-label reveal">Sobre la experiencia</p>
-    <h2 class="section-title reveal">Viajes que <em>transforman,</em><br>no paquetes turísticos</h2>
+    <p class="section-label reveal" data-i18n="Sobre la experiencia">Sobre la experiencia</p>
+    <h2 class="section-title reveal" data-i18n="Viajes que <em>transforman,</em><br>no paquetes turísticos">Viajes que <em>transforman,</em><br>no paquetes turísticos</h2>
     <div class="about-grid">
         <div class="about-image reveal">
             <img src="images/about.jpg" alt="Georgia" alt="Georgia">
             <div class="about-image-badge">
                 <div class="badge-number">4.9</div>
-                <div class="badge-text">Valoración media</div>
+                <div class="badge-text" data-i18n="Valoración media">Valoración media</div>
             </div>
         </div>
         <div>
@@ -1755,28 +1793,28 @@
                 <div class="feature reveal">
                     <div class="feature-icon">🏔</div>
                     <div>
-                        <div class="feature-title">Grupos de 8 a 15 personas</div>
+                        <div class="feature-title" data-i18n="Grupos de 8 a 15 personas">Grupos de 8 a 15 personas</div>
                         <div class="feature-desc">Grupos pequeños que permiten experiencias más íntimas, acceso a lugares exclusivos y conexiones reales con la gente local.</div>
                     </div>
                 </div>
                 <div class="feature reveal">
                     <div class="feature-icon">🍷</div>
                     <div>
-                        <div class="feature-title">Experiencias locales auténticas</div>
+                        <div class="feature-title" data-i18n="Experiencias locales auténticas">Experiencias locales auténticas</div>
                         <div class="feature-desc">Cenas en casas georgianas, mercados locales, bodegueros que llevan siglos haciendo vino en qvevri de barro.</div>
                     </div>
                 </div>
                 <div class="feature reveal">
                     <div class="feature-icon">🗺</div>
                     <div>
-                        <div class="feature-title">Itinerarios diseñados a medida</div>
+                        <div class="feature-title" data-i18n="Itinerarios diseñados a medida">Itinerarios diseñados a medida</div>
                         <div class="feature-desc">Nuestro equipo local conoce cada rincón del país. Nada está en los libros de viaje mainstream.</div>
                     </div>
                 </div>
                 <div class="feature reveal">
                     <div class="feature-icon">👥</div>
                     <div>
-                        <div class="feature-title">Comunidad de viajeros europeos</div>
+                        <div class="feature-title" data-i18n="Comunidad de viajeros europeos">Comunidad de viajeros europeos</div>
                         <div class="feature-desc">Perfiles de 25 a 45 años con mentalidad abierta. Terminas el viaje con amigos de por vida.</div>
                     </div>
                 </div>
@@ -1789,37 +1827,37 @@
 <section id="why" class="why-section">
     <div class="why-inner">
         <p class="section-label reveal">Por qué Georgia</p>
-        <h2 class="section-title reveal">Un país que te cambia<br><em>por dentro</em></h2>
+        <h2 class="section-title reveal" data-i18n="Un país que te cambia<br><em>por dentro</em>">Un país que te cambia<br><em>por dentro</em></h2>
         <p class="section-lead reveal" style="margin-top: 16px;">Georgia lleva siglos en la encrucijada entre Europa y Asia. El resultado es una cultura, una gastronomía y unos paisajes imposibles de encontrar en ningún otro lugar.</p>
         <div class="why-grid">
             <div class="why-card reveal">
                 <div class="why-number">01</div>
-                <h3>Cuna del vino</h3>
+                <h3 data-i18n="Cuna del vino">Cuna del vino</h3>
                 <p>Georgia inventó el vino hace más de 8.000 años. Hoy sigue elaborándose en qvevri de barro, con métodos declarados Patrimonio de la Humanidad por la UNESCO.</p>
             </div>
             <div class="why-card reveal">
                 <div class="why-number">02</div>
-                <h3>Montañas del Cáucaso</h3>
+                <h3 data-i18n="Montañas del Cáucaso">Montañas del Cáucaso</h3>
                 <p>Más altas que los Alpes y mucho menos masificadas. Kazbegi, con su iglesia medieval flotando entre nubes, es una de las imágenes más impactantes de Europa.</p>
             </div>
             <div class="why-card reveal">
                 <div class="why-number">03</div>
-                <h3>Historia milenaria</h3>
+                <h3 data-i18n="Historia milenaria">Historia milenaria</h3>
                 <p>Iglesias del siglo IV, fortalezas en acantilados, monasterios rupestres excavados en piedra. 3.000 años de civilización en cada curva de carretera.</p>
             </div>
             <div class="why-card reveal">
                 <div class="why-number">04</div>
-                <h3>Valor increíble</h3>
+                <h3 data-i18n="Valor increíble">Valor increíble</h3>
                 <p>Cena de 3 platos por 8€. Alojamiento boutique por 30€. Vino local por 3€. Georgia ofrece experiencias premium a una fracción del coste de Europa occidental.</p>
             </div>
             <div class="why-card reveal">
                 <div class="why-number">05</div>
-                <h3>Hospitalidad sin igual</h3>
+                <h3 data-i18n="Hospitalidad sin igual">Hospitalidad sin igual</h3>
                 <p>Los georgianos tienen un concepto llamado <em>Mkurnaloba</em>: el invitado es enviado por Dios. Serás tratado como tal en cada casa y mesa que visites.</p>
             </div>
             <div class="why-card reveal">
                 <div class="why-number">06</div>
-                <h3>Antes del turismo masivo</h3>
+                <h3 data-i18n="Antes del turismo masivo">Antes del turismo masivo</h3>
                 <p>Todavía puedes tener Kazbegi casi para ti solo. Tbilisi es aún auténtica y accesible. El momento de ir es ahora, antes de que llegue el resto del mundo.</p>
             </div>
         </div>
@@ -1835,7 +1873,7 @@
             </div>
             <div class="food-text">
                 <p class="section-label reveal">La mesa georgiana</p>
-                <h2 class="section-title reveal">Comer en Georgia es<br><em>una experiencia en sí misma</em></h2>
+                <h2 class="section-title reveal" data-i18n="Comer en Georgia es<br><em>una experiencia en sí misma</em>">Comer en Georgia es<br><em>una experiencia en sí misma</em></h2>
                 <div class="food-items">
                     <div class="food-item reveal">
                         <span class="food-emoji">🥖</span>
@@ -1874,17 +1912,17 @@
 <!-- GALLERY -->
 <div class="gallery-section">
     <div class="gallery-header reveal">
-        <p class="section-label">Destinos del viaje</p>
+        <p class="section-label" data-i18n="Destinos del viaje">Destinos del viaje</p>
         <h2 class="section-title">Georgia en imágenes</h2>
     </div>
     <div class="gallery-grid">
         <div class="gallery-cell">
             <img src="images/gallery-1.jpg" alt="Cañón Martvili" alt="Cañón Martvili">
-            <div class="gallery-cell-label">Kazbegi y la Iglesia de Gergeti</div>
+            <div class="gallery-cell-label" data-i18n="Kazbegi y la Iglesia de Gergeti">Kazbegi y la Iglesia de Gergeti</div>
         </div>
         <div class="gallery-cell">
             <img src="images/gallery-2.jpg" alt="Cañón con musgo" alt="Cañón con musgo">
-            <div class="gallery-cell-label">El bosque de musgo del Cáucaso</div>
+            <div class="gallery-cell-label" data-i18n="El bosque de musgo del Cáucaso">El bosque de musgo del Cáucaso</div>
         </div>
         <div class="gallery-cell">
             <img src="images/gallery-3.jpg" alt="Crónicas de Georgia" alt="Crónicas de Georgia">
@@ -1892,29 +1930,29 @@
         </div>
         <div class="gallery-cell">
             <img src="images/gallery-4.jpg" alt="Garganta y cascada" alt="Garganta y cascada">
-            <div class="gallery-cell-label">Gargantas de Okatse</div>
+            <div class="gallery-cell-label" data-i18n="Gargantas de Okatse">Gargantas de Okatse</div>
         </div>
         <div class="gallery-cell">
             <img src="images/gallery-5.jpg" alt="Río turquesa" alt="Río turquesa">
-            <div class="gallery-cell-label">Río turquesa — sendero de Martvili</div>
+            <div class="gallery-cell-label" data-i18n="Río turquesa — sendero de Martvili">Río turquesa — sendero de Martvili</div>
         </div>
     </div>
 </div>
 
 <!-- ITINERARY -->
 <section id="itinerary" class="section itinerary-section">
-    <p class="section-label reveal">El viaje</p>
-    <h2 class="section-title reveal">Itinerario de <em>7 días</em></h2>
+    <p class="section-label reveal" data-i18n="El viaje">El viaje</p>
+    <h2 class="section-title reveal" data-i18n="Itinerario de <em>7 días</em>">Itinerario de <em>7 días</em></h2>
     <div class="itinerary-grid">
         <div class="itinerary-days">
             <div class="day-item reveal">
                 <div class="day-number">01</div>
                 <div class="day-content">
-                    <h3>Llegada a Kutaisi</h3>
+                    <h3 data-i18n="Llegada a Kutaisi">Llegada a Kutaisi</h3>
                     <p>Recogida en el aeropuerto, traslado al hotel boutique en el centro histórico. Primer paseo por el Bazar Verde y cena de bienvenida con Supra tradicional.</p>
                     <div class="day-tags">
-                        <span class="tag">Llegada</span>
-                        <span class="tag">Bazar Verde</span>
+                        <span class="tag" data-i18n="Llegada">Llegada</span>
+                        <span class="tag" data-i18n="Bazar Verde">Bazar Verde</span>
                         <span class="tag">Supra</span>
                     </div>
                 </div>
@@ -1925,21 +1963,21 @@
                     <h3>Cañón Martvili & Cueva Prometeo</h3>
                     <p>Paseo en bote por las aguas turquesas del cañón de Martvili. Por la tarde, visita a la espectacular Cueva Prometeo con sus formaciones de cristal iluminadas.</p>
                     <div class="day-tags">
-                        <span class="tag">Naturaleza</span>
-                        <span class="tag">Cañón</span>
-                        <span class="tag">Cueva</span>
+                        <span class="tag" data-i18n="Naturaleza">Naturaleza</span>
+                        <span class="tag" data-i18n="Cañón">Cañón</span>
+                        <span class="tag" data-i18n="Cueva">Cueva</span>
                     </div>
                 </div>
             </div>
             <div class="day-item reveal">
                 <div class="day-number">03</div>
                 <div class="day-content">
-                    <h3>Ruta hacia Tbilisi</h3>
+                    <h3 data-i18n="Ruta hacia Tbilisi">Ruta hacia Tbilisi</h3>
                     <p>Conducimos hacia la capital parando en Gori y la cueva-ciudad de Uplistsikhe, una antigua ciudad rupestre excavada en roca que data del siglo I a.C.</p>
                     <div class="day-tags">
-                        <span class="tag">Arqueología</span>
+                        <span class="tag" data-i18n="Arqueología">Arqueología</span>
                         <span class="tag">Uplistsikhe</span>
-                        <span class="tag">Trayecto</span>
+                        <span class="tag" data-i18n="Trayecto">Trayecto</span>
                     </div>
                     <div class="day-image">
                         <img src="images/monasterio.jpg" alt="Monasterio en Georgia">
@@ -1949,10 +1987,10 @@
             <div class="day-item reveal">
                 <div class="day-number">04</div>
                 <div class="day-content">
-                    <h3>Tbilisi: Ciudad Vieja</h3>
+                    <h3 data-i18n="Tbilisi: Ciudad Vieja">Tbilisi: Ciudad Vieja</h3>
                     <p>Día completo explorando el Casco Antiguo de Tbilisi: los balcones de madera tallada, las termas de azufre, la fortaleza de Narikala y el mercado de Dezerter Bazar.</p>
                     <div class="day-tags">
-                        <span class="tag">Historia</span>
+                        <span class="tag" data-i18n="Historia">Historia</span>
                         <span class="tag">Gastronomía</span>
                         <span class="tag">Tbilisi</span>
                     </div>
@@ -1979,23 +2017,23 @@
             <div class="day-item reveal">
                 <div class="day-number">06</div>
                 <div class="day-content">
-                    <h3>Día libre en Tbilisi</h3>
+                    <h3 data-i18n="Día libre en Tbilisi">Día libre en Tbilisi</h3>
                     <p>Tiempo para explorar a tu ritmo: museos, talleres de khachapuri, bodegas urbanas, o simplemente perderte por Marjanishvili con un vino natural en mano.</p>
                     <div class="day-tags">
-                        <span class="tag">Libre</span>
-                        <span class="tag">Vino</span>
-                        <span class="tag">Cultura</span>
+                        <span class="tag" data-i18n="Libre">Libre</span>
+                        <span class="tag" data-i18n="Vino">Vino</span>
+                        <span class="tag" data-i18n="Cultura">Cultura</span>
                     </div>
                 </div>
             </div>
             <div class="day-item reveal">
                 <div class="day-number">07</div>
                 <div class="day-content">
-                    <h3>Regreso y despedida</h3>
+                    <h3 data-i18n="Regreso y despedida">Regreso y despedida</h3>
                     <p>Desayuno en grupo, últimas compras en el mercado de Dry Bridge, traslado al aeropuerto. Georgia ya es parte de ti.</p>
                     <div class="day-tags">
-                        <span class="tag">Despedida</span>
-                        <span class="tag">Aeropuerto</span>
+                        <span class="tag" data-i18n="Despedida">Despedida</span>
+                        <span class="tag" data-i18n="Aeropuerto">Aeropuerto</span>
                     </div>
                 </div>
             </div>
@@ -2014,20 +2052,20 @@
 <div class="gallery2-section">
     <div class="gallery2-inner">
         <p class="section-label reveal">Más rincones del viaje</p>
-        <h2 class="section-title reveal">Lugares que te van a<br><em>dejar sin palabras</em></h2>
+        <h2 class="section-title reveal" data-i18n="Lugares que te van a<br><em>dejar sin palabras</em>">Lugares que te van a<br><em>dejar sin palabras</em></h2>
         <div class="gallery2-grid">
             <div class="gallery2-cell tall reveal">
                 <img src="images/ananuri.jpg" alt="Fortaleza de Ananuri">
                 <div class="gallery2-label">
-                    <span>Fortaleza de Ananuri</span>
-                    <small>Carretera Militar · Día 5</small>
+                    <span data-i18n="Fortaleza de Ananuri">Fortaleza de Ananuri</span>
+                    <small data-i18n="Carretera Militar · Día 5">Carretera Militar · Día 5</small>
                 </div>
             </div>
             <div class="gallery2-cell reveal">
                 <img src="images/monasterio.jpg" alt="Monasterio georgiano">
                 <div class="gallery2-label">
-                    <span>Monasterios medievales</span>
-                    <small>Ruta a Tbilisi · Día 3</small>
+                    <span data-i18n="Monasterios medievales">Monasterios medievales</span>
+                    <small data-i18n="Ruta a Tbilisi · Día 3">Ruta a Tbilisi · Día 3</small>
                 </div>
             </div>
             <div class="gallery2-cell reveal">
@@ -2041,14 +2079,14 @@
                 <img src="images/mercado.jpg" alt="Mercado de Tbilisi">
                 <div class="gallery2-label">
                     <span>Mercado de Tbilisi</span>
-                    <small>Ciudad Vieja · Día 4</small>
+                    <small data-i18n="Ciudad Vieja · Día 4">Ciudad Vieja · Día 4</small>
                 </div>
             </div>
             <div class="gallery2-cell reveal">
                 <img src="images/comida.jpg" alt="Gastronomía georgiana">
                 <div class="gallery2-label">
                     <span>La mesa georgiana</span>
-                    <small>Cada día del viaje</small>
+                    <small data-i18n="Cada día del viaje">Cada día del viaje</small>
                 </div>
             </div>
         </div>
@@ -2058,11 +2096,11 @@
 <!-- PRICING -->
 <div id="pricing" class="pricing-section">
     <div class="pricing-inner">
-        <p class="section-label reveal">Precio y detalles</p>
-        <h2 class="section-title reveal">Todo lo que necesitas,<br><em>sin sorpresas</em></h2>
+        <p class="section-label reveal" data-i18n="Precio y detalles">Precio y detalles</p>
+        <h2 class="section-title reveal" data-i18n="Todo lo que necesitas,<br><em>sin sorpresas</em>">Todo lo que necesitas,<br><em>sin sorpresas</em></h2>
         <div class="pricing-grid">
             <div class="price-card reveal">
-                <h3>Precio por persona</h3>
+                <h3 data-i18n="Precio por persona">Precio por persona</h3>
                 <div class="price-amount">1.250€</div>
                 <div class="price-period">7 días · Grupo pequeño · Todo incluido*</div>
                 <div class="price-divider"></div>
@@ -2077,12 +2115,12 @@
                     <li>Soporte 24h durante el viaje</li>
                 </ul>
                 <div class="not-included">
-                    <h4>No incluido</h4>
+                    <h4 data-i18n="No incluido">No incluido</h4>
                     <ul class="price-list not-included">
-                        <li>Vuelos internacionales</li>
+                        <li data-i18n="Vuelos internacionales">Vuelos internacionales</li>
                         <li>Comidas libres (presupuesto: 15–20€/día)</li>
                         <li>Seguro de viaje (recomendado)</li>
-                        <li>Gastos personales</li>
+                        <li data-i18n="Gastos personales">Gastos personales</li>
                     </ul>
                 </div>
             </div>
@@ -2100,7 +2138,7 @@
                     <li>Confirmación inmediata por email</li>
                 </ul>
                 <div style="margin-top: 32px;">
-                    <a href="#booking" class="btn-primary" style="display: block; text-align: center; border-radius: 2px;">Reservar ahora</a>
+                    <a href="#booking" class="btn-primary" style="display: block; text-align: center; border-radius: 2px;" data-i18n="Reservar ahora">Reservar ahora</a>
                     <p style="text-align: center; font-size: 12px; color: rgba(245,240,232,0.3); margin-top: 16px;">Grupos de máximo 15 personas · Plazas limitadas</p>
                 </div>
             </div>
@@ -2111,8 +2149,8 @@
 <!-- REVIEWS -->
 <div class="reviews-section">
     <div class="reviews-inner">
-        <p class="section-label reveal">Viajeros anteriores</p>
-        <h2 class="section-title reveal">Lo que dicen<br><em>quienes ya fueron</em></h2>
+        <p class="section-label reveal" data-i18n="Viajeros anteriores">Viajeros anteriores</p>
+        <h2 class="section-title reveal" data-i18n="Lo que dicen<br><em>quienes ya fueron</em>">Lo que dicen<br><em>quienes ya fueron</em></h2>
         <div class="reviews-grid">
             <div class="review-card reveal">
                 <div class="review-stars">★★★★★</div>
@@ -2121,7 +2159,7 @@
                     <div class="review-avatar">M</div>
                     <div>
                         <div class="author-name">Marc Jensen</div>
-                        <div class="author-location">Barcelona</div>
+                        <div class="author-location" data-i18n="Barcelona">Barcelona</div>
                     </div>
                 </div>
             </div>
@@ -2132,7 +2170,7 @@
                     <div class="review-avatar">E</div>
                     <div>
                         <div class="author-name">Elena Rodríguez</div>
-                        <div class="author-location">Madrid</div>
+                        <div class="author-location" data-i18n="Madrid">Madrid</div>
                     </div>
                 </div>
             </div>
@@ -2143,7 +2181,7 @@
                     <div class="review-avatar">D</div>
                     <div>
                         <div class="author-name">David Abad</div>
-                        <div class="author-location">Valencia</div>
+                        <div class="author-location" data-i18n="Valencia">Valencia</div>
                     </div>
                 </div>
             </div>
@@ -2154,8 +2192,8 @@
 <!-- FAQ -->
 <section id="faq" class="faq-section">
     <div class="faq-inner">
-        <p class="section-label reveal">Preguntas frecuentes</p>
-        <h2 class="section-title reveal">Todo lo que necesitas<br><em>saber antes de ir</em></h2>
+        <p class="section-label reveal" data-i18n="Preguntas frecuentes">Preguntas frecuentes</p>
+        <h2 class="section-title reveal" data-i18n="Todo lo que necesitas<br><em>saber antes de ir</em>">Todo lo que necesitas<br><em>saber antes de ir</em></h2>
         <div class="faq-list">
             <div class="faq-item reveal">
                 <div class="faq-question">
@@ -2228,21 +2266,21 @@
 <section class="calc-section">
     <div class="calc-inner">
         <div class="calc-header">
-            <p class="section-label reveal">Calcula tu viaje</p>
-            <h2 class="section-title reveal">¿Cuánto te va a costar<br><em>la experiencia de tu vida?</em></h2>
+            <p class="section-label reveal" data-i18n="Calcula tu viaje">Calcula tu viaje</p>
+            <h2 class="section-title reveal" data-i18n="¿Cuánto te va a costar<br><em>la experiencia de tu vida?</em>">¿Cuánto te va a costar<br><em>la experiencia de tu vida?</em></h2>
         </div>
         <div class="calc-grid">
             <div class="calc-controls reveal">
                 <div class="calc-field">
-                    <label>¿Cuántas personas viajáis?</label>
+                    <label data-i18n="¿Cuántas personas viajáis?">¿Cuántas personas viajáis?</label>
                     <div class="calc-stepper">
-                        <button onclick="const i=document.getElementById('calcPeople'); if(i.value>1){i.value=parseInt(i.value)-1;updateCalculator()}" class="stepper-btn">−</button>
+                        <button onclick="stepPeople(-1)" class="stepper-btn">−</button>
                         <input type="number" id="calcPeople" value="1" min="1" max="4" oninput="updateCalculator()">
-                        <button onclick="const i=document.getElementById('calcPeople'); if(i.value<4){i.value=parseInt(i.value)+1;updateCalculator()}" class="stepper-btn">+</button>
+                        <button onclick="stepPeople(1)" class="stepper-btn">+</button>
                     </div>
                 </div>
                 <div class="calc-field">
-                    <label>Extras opcionales</label>
+                    <label data-i18n="Extras opcionales">Extras opcionales</label>
                     <div class="calc-extras">
                         <label class="calc-extra-item">
                             <input type="checkbox" class="calc-extra" value="80" onchange="updateCalculator()">
@@ -2261,22 +2299,22 @@
             </div>
             <div class="calc-result reveal">
                 <div class="calc-result-inner">
-                    <div class="calc-total-label">Total estimado</div>
+                    <div class="calc-total-label" data-i18n="Total estimado">Total estimado</div>
                     <div class="calc-total" id="calcTotal">1.250€</div>
                     <div class="calc-bar-wrap">
                         <div class="calc-bar" id="calcBar" style="width:21%"></div>
                     </div>
                     <div class="calc-breakdown">
                         <div class="calc-row">
-                            <span>Depósito para reservar</span>
+                            <span data-i18n="Depósito para reservar">Depósito para reservar</span>
                             <strong id="calcDeposit">350€</strong>
                         </div>
                         <div class="calc-row">
-                            <span>Resto (30 días antes)</span>
+                            <span data-i18n="Resto (30 días antes)">Resto (30 días antes)</span>
                             <strong id="calcRest">900€</strong>
                         </div>
                     </div>
-                    <a href="#booking" class="btn-primary" style="display:block;text-align:center;margin-top:24px;border-radius:2px;">Reservar con este precio</a>
+                    <a href="#booking" class="btn-primary" style="display:block;text-align:center;margin-top:24px;border-radius:2px;" data-i18n="Reservar con este precio">Reservar con este precio</a>
                     <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:10px;">Los vuelos no están incluidos</p>
                 </div>
             </div>
@@ -2288,49 +2326,49 @@
 <section id="booking" class="booking-section">
     <div class="booking-inner">
         <div class="booking-info">
-            <p class="section-label reveal">Próximas salidas</p>
-            <h2 class="section-title reveal">Elige tu<br><em>fecha de viaje</em></h2>
+            <p class="section-label reveal" data-i18n="Próximas salidas">Próximas salidas</p>
+            <h2 class="section-title reveal" data-i18n="Elige tu<br><em>fecha de viaje</em>">Elige tu<br><em>fecha de viaje</em></h2>
             <p class="section-lead reveal" style="margin-top: 16px;">Plazas limitadas para mantener la calidad de la experiencia. Reserva con depósito y asegura tu sitio.</p>
             <div class="booking-dates reveal">
-                <h4>Salidas disponibles 2026</h4>
+                <h4 data-i18n="Salidas disponibles 2026">Salidas disponibles 2026</h4>
                 <div class="date-option">
                     <span class="date-label">10–16 Mayo 2026</span>
-                    <span class="date-spots spots-available">4 plazas libres</span>
+                    <span class="date-spots spots-available" data-i18n="4 plazas libres">4 plazas libres</span>
                 </div>
                 <div class="date-option">
                     <span class="date-label">14–20 Junio 2026</span>
-                    <span class="date-spots spots-available">7 plazas libres</span>
+                    <span class="date-spots spots-available" data-i18n="7 plazas libres">7 plazas libres</span>
                 </div>
                 <div class="date-option">
                     <span class="date-label">5–11 Julio 2026</span>
-                    <span class="date-spots spots-few">2 plazas libres</span>
+                    <span class="date-spots spots-few" data-i18n="2 plazas libres">2 plazas libres</span>
                 </div>
                 <div class="date-option">
                     <span class="date-label">22–28 Agosto 2026</span>
-                    <span class="date-spots spots-full">Completo</span>
+                    <span class="date-spots spots-full" data-i18n="Completo">Completo</span>
                 </div>
                 <div class="date-option">
                     <span class="date-label">12–18 Septiembre 2026</span>
-                    <span class="date-spots spots-available">9 plazas libres</span>
+                    <span class="date-spots spots-available" data-i18n="9 plazas libres">9 plazas libres</span>
                 </div>
                 <div class="date-option">
                     <span class="date-label">3–9 Octubre 2026</span>
-                    <span class="date-spots spots-available">11 plazas libres</span>
+                    <span class="date-spots spots-available" data-i18n="11 plazas libres">11 plazas libres</span>
                 </div>
             </div>
         </div>
         <div class="booking-form reveal">
-            <h3>Solicita tu reserva</h3>
+            <h3 data-i18n="Solicita tu reserva">Solicita tu reserva</h3>
             <div class="form-group">
-                <label>Nombre completo</label>
-                <input type="text" placeholder="Tu nombre..." id="name">
+                <label data-i18n="Nombre completo">Nombre completo</label>
+                <input type="text" placeholder="Tu nombre..." data-i18n-placeholder="Tu nombre..." id="name">
             </div>
             <div class="form-group">
-                <label>Correo electrónico</label>
-                <input type="email" placeholder="tu@email.com" id="email">
+                <label data-i18n="Correo electrónico">Correo electrónico</label>
+                <input type="email" placeholder="tu@email.com" data-i18n-placeholder="tu@email.com" id="email">
             </div>
             <div class="form-group">
-                <label>Fecha preferida</label>
+                <label data-i18n="Fecha preferida">Fecha preferida</label>
                 <select id="date">
                     <option value="">Selecciona una salida...</option>
                     <option>10–16 Mayo 2026</option>
@@ -2341,17 +2379,17 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Número de personas</label>
+                <label data-i18n="Número de personas">Número de personas</label>
                 <select id="people">
-                    <option>1 persona</option>
-                    <option>2 personas</option>
-                    <option>3 personas</option>
-                    <option>4 personas</option>
+                    <option data-i18n="1 persona">1 persona</option>
+                    <option data-i18n="2 personas">2 personas</option>
+                    <option data-i18n="3 personas">3 personas</option>
+                    <option data-i18n="4 personas">4 personas</option>
                 </select>
             </div>
             <div class="form-group">
                 <label>¿Por qué quieres venir? (opcional)</label>
-                <textarea rows="3" placeholder="Cuéntanos un poco sobre ti..." id="message"></textarea>
+                <textarea rows="3" placeholder="Cuéntanos un poco sobre ti..." data-i18n-placeholder="Cuéntanos un poco sobre ti..." id="message"></textarea>
             </div>
             <button class="form-submit" onclick="handleSubmit()">Reservar mi plaza · 350€ depósito</button>
             <p class="form-note">Confirmación en menos de 24h · Cancelación gratuita hasta 45 días antes</p>
@@ -2372,7 +2410,7 @@
                 <a href="https://www.instagram.com/connectgeorgia" target="_blank" class="social-link" aria-label="Instagram">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
-                <a href="mailto:hola@connectgeorgia.com" class="social-link" aria-label="Email">
+                <a href="/cdn-cgi/l/email-protection#472f282b26072428292922243320222835202e266924282a" class="social-link" aria-label="Email">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 </a>
             </div>
@@ -2380,19 +2418,19 @@
         <div class="footer-cols">
             <div class="footer-col">
                 <h4>El viaje</h4>
-                <a href="#about">La experiencia</a>
-                <a href="#itinerary">Itinerario 7 días</a>
+                <a href="#about" data-i18n="La experiencia">La experiencia</a>
+                <a href="#itinerary" data-i18n="Itinerario 7 días">Itinerario 7 días</a>
                 <a href="#pricing">Precios</a>
-                <a href="#booking">Reservar plaza</a>
+                <a href="#booking" data-i18n="Reservar plaza">Reservar plaza</a>
             </div>
             <div class="footer-col">
                 <h4>Georgia</h4>
-                <a href="#why">Por qué ir</a>
+                <a href="#why" data-i18n="Por qué ir">Por qué ir</a>
                 <a href="#faq">Preguntas frecuentes</a>
-                <a href="#reviews">Opiniones</a>
+                <a href="#reviews" data-i18n="Opiniones">Opiniones</a>
             </div>
             <div class="footer-col">
-                <h4>Próxima salida</h4>
+                <h4 data-i18n="Próxima salida">Próxima salida</h4>
                 <div class="footer-countdown" id="footerCountdown">
                     <div class="fc-block"><span id="fcDays">--</span><small>días</small></div>
                     <div class="fc-block"><span id="fcHours">--</span><small>horas</small></div>
@@ -2430,6 +2468,10 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+    <div style="display:flex;gap:8px;margin-bottom:8px;">
+        <button onclick="setLang('es')" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:white;padding:6px 16px;border-radius:2px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:0.1em;">ES</button>
+        <button onclick="setLang('en')" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:white;padding:6px 16px;border-radius:2px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:0.1em;">EN</button>
+    </div>
     <a href="#about" class="mobile-link">Experiencia</a>
     <a href="#why" class="mobile-link">Por qué Georgia</a>
     <a href="#itinerary" class="mobile-link">Itinerario</a>
@@ -2439,7 +2481,7 @@
 </div>
 <div class="mobile-overlay" id="mobileOverlay"></div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─── SCROLL PROGRESS BAR ────────────────────────────
 const progressBar = document.getElementById('scrollProgress');
 window.addEventListener('scroll', () => {
@@ -2583,6 +2625,12 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ─── PRICE CALCULATOR ───────────────────────────────
+function stepPeople(dir) {
+    const input = document.getElementById('calcPeople');
+    const val = parseInt(input.value) + dir;
+    if (val >= 1 && val <= 4) { input.value = val; updateCalculator(); }
+}
+
 function updateCalculator() {
     const people = parseInt(document.getElementById('calcPeople').value);
     const extras = [];
@@ -2672,8 +2720,3 @@ const sectionObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.4 });
 sections.forEach(s => sectionObserver.observe(s));
-</script>
-
-
-</body>
-</html>
