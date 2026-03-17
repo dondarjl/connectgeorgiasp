@@ -2818,6 +2818,31 @@ function googleTranslateElementInit() {
 }
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+<script>
+// ─── WAITLIST ────────────────────────────────────────
+function handleWaitlist() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    if (!name || !email) {
+        alert('Por favor, introduce tu nombre y email.');
+        return;
+    }
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = 'Apuntando...';
+    btn.disabled = true;
+    gtag('event', 'waitlist_signup', { event_category: 'engagement', event_label: email });
+    setTimeout(() => {
+        const notification = document.getElementById('notification');
+        notification.innerHTML = '✓ ¡Apuntado! Te enviamos un cuestionario breve.';
+        notification.classList.add('show');
+        setTimeout(() => notification.classList.remove('show'), 6000);
+        btn.textContent = 'Quiero apuntarme →';
+        btn.disabled = false;
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        window.open('https://docs.google.com/forms/d/e/1FAIpQLSc21owMjgMnQjD6XI_wKrjKVh57DDutfzPXqPAGfkjVQlm-dw/viewform', '_blank');
+    }, 800);
+}
+</script>
 </body>
 </html>
